@@ -1,0 +1,30 @@
+{
+   "author": "Harisankar P S",
+   "description": "Insert a unique gmail id using the following format: <username>+<domain_name>@gmail.com",
+   "manifest_version": 3,
+   "name": "Autofill unique GMail Id",
+   "permissions": [
+      "contextMenus",
+      "storage"
+   ],
+   "background": {
+      "service_worker": "app.js"
+   },
+   "options_ui": {
+      "page": "data/options/options.html",
+      "open_in_tab": true
+    },
+   "version": "0.1",
+   "icons": {
+      "16": "icon/icon16.png",
+      "32": "icon/icon32.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    },
+   "content_scripts": [{
+      "matches": [ "http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "match_about_blank": true
+   }]
+}
