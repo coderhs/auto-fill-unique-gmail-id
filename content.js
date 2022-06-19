@@ -12,26 +12,26 @@
 
   function replaceSelectedText(elem, text) {
     chrome.storage.sync.get({
-      uege_username: '',
-      uege_domain: 'gmail.com'
+      uege_username: "",
+      uege_domain: "gmail.com"
     }, function(items) {
-      if (items.uege_username != '') {
+      if (items.uege_username != "") {
         elem.value = `${items.uege_username}+${removeSubdomain(window.location.host)}@${items.uege_domain}`;
       }
     });
   }
 
   function removeSubdomain(s) {
-    const knownSubdomainsRegExp = new RegExp(`^(${knownSubdomains})\.`, 'i');
-    const firstTLDsRegExp = new RegExp(`\.(${firstTLDs})$`, 'i');
-    const secondTLDsRegExp = new RegExp(`\.(${secondTLDs})$`, 'i');
-    s = s.replace(knownSubdomainsRegExp, '');
-    s = s.replace(firstTLDsRegExp, '');
-    s = s.replace(secondTLDsRegExp, '');
-    if (s[s.length-1] === '.') {
+    const knownSubdomainsRegExp = new RegExp(`^(${knownSubdomains})\.`, "i");
+    const firstTLDsRegExp = new RegExp(`\.(${firstTLDs})$`, "i");
+    const secondTLDsRegExp = new RegExp(`\.(${secondTLDs})$`, "i");
+    s = s.replace(knownSubdomainsRegExp, "");
+    s = s.replace(firstTLDsRegExp, "");
+    s = s.replace(secondTLDsRegExp, "");
+    if (s[s.length-1] === ".") {
       s = s.slice(0, s.length -1);
     }
-    s = s.replace('.', '_');
+    s = s.replace(".", "_");
 
     return s;
   };
